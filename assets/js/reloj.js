@@ -21,6 +21,10 @@ export function alarm(sound, btnplay, btnStop) {
   const $alarm = d.createElement("audio");
   $alarm.src = sound;
 
+  $alarm.addEventListener("ended", () => {
+    document.querySelector(btnplay).disabled = false;
+  });
+
   d.addEventListener("click", (e) => {
     if (e.target.matches(btnplay)) {
       alarmTempo = setTimeout(() => {
