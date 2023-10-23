@@ -11,7 +11,7 @@ export function digitalClock(clock, btnPlay, btnStop) {
     }
     if (e.target.matches(btnStop)) {
       clearInterval(clokTempo);
-      d.querySelector(clock).innerHTML = null;
+      // d.querySelector(clock).innerHTML = null;
       d.querySelector(btnPlay).disabled = false;
     }
   });
