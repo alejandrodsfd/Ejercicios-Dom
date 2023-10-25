@@ -6,40 +6,49 @@ export function moveBall(e, ball, stage) {
     $stage = d.querySelector(stage),
     limitBall = $ball.getBoundingClientRect(),
     limitStage = $stage.getBoundingClientRect();
-  console.log(limitBall, limitStage)
-  console.log(e.keyCode);
+  // console.log(limitBall, limitStage)
+  // console.log(e.keyCode);
   switch (e.keyCode) {
     // izquierda
     case 37:
-      e.preventDefault();
-      if(limitBall.left > limitStage.left)x--;
+      if(Math.round(limitBall.left) - 5 > Math.round(limitStage.left)){
+        e.preventDefault();
+        x--;
+      }
       break;
     // arriba
     case 38:
-      e.preventDefault();
-      if(limitBall.top > limitStage.top)y--;
+      if(Math.round(limitBall.top) - 5 > Math.round(limitStage.top)){
+        e.preventDefault();
+        y--;
+      }
       break;
     // derecha
     case 39:
-      e.preventDefault();
-      if(limitBall.right < limitStage.right)x++;
+      if(Math.round(limitBall.right) + 5 < Math.round(limitStage.right)){
+        x++;
+        e.preventDefault();
+      }
       break;
     // abajo
     case 40:
-      e.preventDefault();
-      if(limitBall.bottom < limitStage.bottom)y++;
+      if(Math.round(limitBall.bottom) + 5 < Math.round(limitStage.bottom)){
+        e.preventDefault();
+        y++;
+        
+      }
       break;
 
     default:
       break;
   }
-  $ball.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+  $ball.style.transform = `translate(${x * 8}px, ${y * 8}px)`;
 }
 export function shortcuts(e) {
-  console.log(e);
-  console.log(e.type);
-  console.log(e.key);
-  console.log(e.keyCode);
+  // console.log(e);
+  // console.log(e.type);
+  // console.log(e.key);
+  // console.log(e.keyCode);
 
   if (e.key === "a" && e.altKey) {
     alert("haz lanzado una alerta");
