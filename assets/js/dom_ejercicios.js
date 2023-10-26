@@ -11,10 +11,11 @@ d.addEventListener("DOMContentLoaded", (e) => {
   alarm("assets/sonidos/alarma.mp3", "#iniciar-alarma", "#detener-alarma");
   countDown("countdown", "Nov 17, 2023, 00:00:00", "Feliz Cumpleaños papasito rico");
   scrollTopButton(".scroll-top-btn")
-  darkTheme(".dark-theme-btn", "dark-mode")
 });
 
 d.addEventListener("keydown", (e) => {
   shortcuts(e);
   moveBall(e, ".ball", ".stage");
 });
+
+darkTheme(".dark-theme-btn", "dark-mode")

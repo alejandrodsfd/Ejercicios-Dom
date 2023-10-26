@@ -1,4 +1,5 @@
-const d = document;
+const d = document,
+  ls = localStorage;
 export default function darkTheme(btn, classDark) {
   const $themeBtn = d.querySelector(btn),
     $selectors = d.querySelectorAll("[data-dark]"),
@@ -6,16 +7,30 @@ export default function darkTheme(btn, classDark) {
   console.log($selectors);
   let moon = "🌙",
     sun = "☀️";
+  const darkMode = () => {
+      $selectors.forEach((el) => el.classList.add(classDark));
+      $selectoresW.classList.add("dark-modeW");
+      $themeBtn.textContent = sun;
+      ls.setItem("theme", "dark");
+    },
+    lightMode = () => {
+      $selectors.forEach((el) => el.classList.remove(classDark));
+      $themeBtn.textContent = moon;
+      $selectoresW.classList.remove("dark-modeW");
+      ls.setItem("theme", "light");
+    };
   d.addEventListener("click", (e) => {
     if (e.target.matches(btn)) {
-      $selectors.forEach((el) => el.classList.toggle(classDark));
-      $selectoresW.classList.toggle("dark-modeW")
-      if($themeBtn.textContent === moon){
-        $themeBtn.textContent = sun;
-      }else{
-        $themeBtn.textContent = moon;
+      if ($themeBtn.textContent === moon) {
+        darkMode();
+      } else {
+        lightMode();
       }
-      
     }
+  });
+  d.addEventListener("DOMContentLoaded", (e) => {
+    if (ls.getItem("theme") === null) ls.setItem("theme", "light");
+    if (ls.getItem("theme") === "light") lightMode();
+    if (ls.getItem("theme") === "dark") darkMode();
   });
 }
