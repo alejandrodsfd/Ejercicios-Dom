@@ -4,7 +4,7 @@ export default function darkTheme(btn, classDark) {
   const $themeBtn = d.querySelector(btn),
     $selectors = d.querySelectorAll("[data-dark]"),
     $selectoresW = d.querySelector("[data-darkW]");
-  console.log($selectors);
+  // console.log($selectors);
   let moon = "🌙",
     sun = "☀️";
   const darkMode = () => {
