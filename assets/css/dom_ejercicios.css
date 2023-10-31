@@ -93,8 +93,8 @@ img{
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-items: center;
-  align-content:space-evenly;
+  justify-content: center;
+  align-items:center;
   text-align: center;
 }
 .menu a{
@@ -105,6 +105,8 @@ img{
   text-decoration: none;
   color: var(--main-color);
   transition: all 0.3s ease;
+  justify-content: center;
+  align-content: space-between;
 }
 .menu a:hover{
   font-weight: bold;
@@ -182,4 +184,22 @@ img{
 }
 .dark-modeW{
   background-color: white;
+}
+
+/* Network Status */
+.online,
+.offline {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: #1b5e20;
+  color: #fff;
+}
+
+.offline{
+  background-color: #b71c1c;
 }
