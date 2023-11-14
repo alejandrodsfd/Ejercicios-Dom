@@ -9,7 +9,7 @@ const d = document,
       }else{
         d.getElementById(id).innerHTML = mobileContent
       }
-      console.log(e.matches)
+      // console.log(e.matches)
     }
     breakpoint.addEventListener("change", responsive)
     responsive(breakpoint)

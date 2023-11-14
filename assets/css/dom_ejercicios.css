@@ -60,7 +60,7 @@ img{
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 998;
+  z-index: 1000;
   width: 50%;
   background-color: var(--second-modal-color);
   transition: transform 1s ease, opacity 1s ease;
@@ -69,6 +69,7 @@ img{
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
   /* opacity: 0; */
 }
 .panel.is-active{
@@ -96,20 +97,19 @@ img{
   justify-content: center;
   align-items:center;
   text-align: center;
+
 }
 .menu a{
   width: inherit;
-  display: flex;
   padding: 1rem;
   font-size: 1.5rem;
   text-decoration: none;
   color: var(--main-color);
   transition: all 0.3s ease;
-  justify-content: center;
-  align-content: space-between;
 }
 .menu a:hover{
   font-weight: bold;
+  font-size: 1.4rem;
   color: var(--second-color);
   background-color: var(--main-modal-color);
 }
@@ -202,4 +202,205 @@ img{
 
 .offline{
   background-color: #b71c1c;
+}
+
+/* filtro de busqueda */
+.cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.card{
+  background-color: var(--second-color);
+  color: var(--main-color);
+  transition: all 0.3s ease-out;
+}
+
+.card img{
+  width: 100%;
+  height: auto;
+}
+.card figcaption{
+  padding: 1rem;
+}
+.filter{
+  visibility: hidden;
+  opacity: 0;
+  order: 1;
+}
+
+/* Responsive slaider */
+.slaider{
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.slaider-slides{
+  position: relative;
+  height: 400px;
+}
+.slider-slide{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease;
+}
+.slider-slide img{
+  height: inherit;
+  width: inherit;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+.slider-slide.active{
+  opacity: 1;
+  visibility: visible;
+}
+.slaider a{
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: thin solid #000;
+  text-decoration: none;
+  background-color: white;
+  color: #000;
+  transition: all .3s ease;
+}
+
+.slaider a:hover{
+  background-color: black;
+  color: white;
+}
+.slider-btns{
+  position: absolute;
+  width: 100%;
+  top: calc(50% - 2rem);
+  display: flex;
+  font-size: 3rem;
+  font-weight: bold;
+  justify-content: space-between;
+}
+/* Stylos videos */
+.contenedor_video{
+  max-width: 1200px;
+}
+.contenedor_video video{
+  width: 100%;
+}
+/* ContactForm Validations */
+.contact-form{
+  --form-ok-color: #4caf50;
+  --form-error-color: #f44336;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+.contact-form > *{
+  padding: .5rem;
+  margin: 1rem auto;
+  display: block;
+  width: 100%;
+}
+.contact-form textarea{
+  resize: none;
+}
+.contact-form legend,
+.contact-form-response{
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+.contact-form input,
+.contact-form textarea{
+  font-size: 1rem;
+  font-family: sans-serif;
+}
+
+.contact-form input[type="submit"]{
+  width: 50%;
+  font-weight: bold;
+  cursor: pointer;
+}
+.contact-form *::placeholder{
+  color: #000;
+}
+.contact-form [required]:valid{
+  border: thin solid var(--form-ok-color);
+}
+.contact-form [required]:invalid{
+  border: thin solid var(--form-error-color);
+}
+
+.contact-form-error{
+  margin-top: -1rem;
+  font-size: 80%;
+  background-color: var(--form-error-color);
+  color: #fff;
+  transition: all .8s ease;
+}
+
+.contact-form-error-is-active{
+  display: block;
+  animation: show-message 1s 1 normal 0s ease-out both;
+}
+
+@keyframes show-message {
+  0%{
+    visibility: hidden;
+    opacity: 0;
+  }
+  100%{
+    visibility: visible;
+    opacity: 1;
+  }
+}
+/****** ScrollSpay *****/
+@media screen and (min-width: 1024px){
+  body{
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 4rem auto;
+    grid-template-areas: 
+    "header header" 
+    "main   panel";
+  }
+  main{
+    grid-area: main;
+  }
+  .header{
+    grid-area: header;
+  }
+  .panel{
+    grid-area: panel;
+    position: sticky;
+    background-color: var(--second-color);
+    justify-content: flex-start;
+    align-self: start;
+    top: 4rem;
+    width: 100%;
+    transform: translate(0, 0);
+    overflow-y: auto;
+    
+  }
+  .panel-btn{
+    display: none;
+  }
+  .menu{
+    justify-content: start;
+    text-align: center;
+    max-height: calc(100vh - 64px);
+  }
+  .menu a:hover,
+  .menu a.active{
+    color: var(--second-color);
+    background-color: var(--main-color);
+  }
+  .scroll-top-btn{
+    right: initial;
+    left: calc(4.25rem + 1vw);
+  }
 }
