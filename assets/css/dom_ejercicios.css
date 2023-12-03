@@ -343,11 +343,16 @@ img{
   transition: all .8s ease;
 }
 
-.contact-form-error-is-active{
+.contact-form-error.is-active{
   display: block;
   animation: show-message 1s 1 normal 0s ease-out both;
 }
-
+.none {
+  display: none;
+}
+.color-svg{
+  stroke: #fff;
+}
 @keyframes show-message {
   0%{
     visibility: hidden;

@@ -8,12 +8,14 @@ import webCam from "./deteccion_webcam.js";
 import searchFilters from "./filtro_busquedas.js";
 import getGeolocation from "./geolocalizacion.js";
 import hamburgerMenu from "./menu_hamburguesa.js";
+import speechReader from "./narrador.js";
 import responsiveMedia from "./objeto_responsive.js";
 import responsiveTester from "./prueba_responsive.js";
 import { digitalClock, alarm } from "./reloj.js";
 import scrollSpy from "./scroll_spia.js";
 import draw from "./sorteo.js";
 import { shortcuts, moveBall } from "./teclado.js";
+import contactFormValidations from "./validaciones-formulario.js";
 import smartVideo from "./video_inteligente.js";
 const d = document;
 d.addEventListener("DOMContentLoaded", (e) => {
@@ -41,7 +43,6 @@ d.addEventListener("DOMContentLoaded", (e) => {
 
   responsiveTester("responsive-tester")
   userDeviceInfo("user-device")
-  networkStatus()
   webCam("webcam")
   getGeolocation("geolocation")
   searchFilters(".card-filter", ".card")
@@ -49,6 +50,8 @@ d.addEventListener("DOMContentLoaded", (e) => {
   slider()
   scrollSpy()
   smartVideo()
+  contactFormValidations()
+  
 });
 
 d.addEventListener("keydown", (e) => {
@@ -57,3 +60,5 @@ d.addEventListener("keydown", (e) => {
 });
 
 darkTheme(".dark-theme-btn", "dark-mode");
+networkStatus()
+speechReader()
